@@ -45,12 +45,12 @@ namespace LibNegContrerasMontesinos
             return objInventario;
         }// fin ingresar
 
-        //public Inventario mostrar(Inventario objInventario)
-        //{
-        //    BaseDato objDB = new BaseDato();
-        //    objInventario = objDB.mostrar(objInventario);
-        //    return objInventario;
-        //}// fin mostrar
+        public Inventario mostrar(Inventario objInventario)
+        {
+            BaseDato objDB = new BaseDato();
+            objInventario = objDB.mostrar(objInventario);
+            return objInventario;
+        }// fin mostrar
 
         //public Inventario eliminar(Inventario objInventario)
         //{

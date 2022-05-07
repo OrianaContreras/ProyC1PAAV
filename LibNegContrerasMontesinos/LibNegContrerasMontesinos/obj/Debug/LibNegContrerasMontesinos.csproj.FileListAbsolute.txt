@@ -1,9 +1,9 @@
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibNegContrerasMontesinos.dll
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibNegContrerasMontesinos.pdb
-C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.AssemblyReference.cache
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.CoreCompileInputs.cache
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.dll
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.pdb
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibDataContrerasMontesinos.dll
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibDataContrerasMontesinos.pdb
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.CopyComplete
+C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.AssemblyReference.cache

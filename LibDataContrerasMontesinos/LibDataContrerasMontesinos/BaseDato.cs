@@ -48,6 +48,32 @@ namespace LibDataContrerasMontesinos
             return objInventario;
         }// fin ingresar
 
+        public Inventario mostrar(Inventario objInventario)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_mostrar";
+
+                cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = objInventario.Codigo;
+
+                cmd.Connection.Open();
+                sda.Fill(objInventario.Ds);
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
+            }
+            return objInventario;
+        }// fin mostrar
+
 
         #endregion
 

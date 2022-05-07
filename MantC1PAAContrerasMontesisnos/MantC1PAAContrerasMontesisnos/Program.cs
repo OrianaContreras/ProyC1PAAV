@@ -32,7 +32,7 @@ namespace MantC1PAAContrerasMontesisnos
                         ingresar();
                         break;
                     case 2:
-                        //mostrar();
+                        mostrar();
                         break;
                     case 3:
                         //modificar();
@@ -188,32 +188,31 @@ namespace MantC1PAAContrerasMontesisnos
             //}
         }
 
-        //public static void mostrar()
-        //{
-        //    DataSet ds = new DataSet();
-        //    Inventario objInventario = new Inventario();
+        public static void mostrar()
+        {
+            DataSet ds = new DataSet();
+            Inventario objInventario = new Inventario();
 
-        //    Console.WriteLine("Ingrese Codigo o * para buscar todos....");
-        //    objInventario.Codigo = Console.ReadLine();
+            Console.WriteLine("Ingrese Código");
+            objInventario.Codigo = int.Parse(Console.ReadLine());
 
-        //    objInventario = objInventario.mostrar(objInventario);
+            objInventario = objInventario.mostrar(objInventario);
 
-        //    Console.WriteLine("Mostrando XML: {0} ", objInventario.Ds.GetXml().ToString());
-        //    pausa();
-        //    Console.WriteLine("Mostrando datos sin formato XML: ");
-        //    foreach (DataRow fila in objInventario.Ds.Tables["Table"].Rows)
-        //    {
-        //        Console.WriteLine("\nId \t\t: {0}", fila["id"].ToString());
-        //        Console.WriteLine("Codigo \t\t: {0}", fila["Codigo"].ToString());
-        //        Console.WriteLine("Fecha \t\t: {0}", fila["Fecha"].ToString());
-        //        Console.WriteLine("Ape. Paterno    : {0}", fila["Seccion"].ToString());
-        //        Console.WriteLine("Ape. Materno    : {0}", fila["NombreArticulo"].ToString());
-        //        Console.WriteLine("Estado \t\t: {0}", fila["Estado"].ToString());
-        //        Console.WriteLine("Etiquetado \t: {0}", fila["Etiquetado"].ToString());
-        //        Console.WriteLine("RealizadoPor \t\t: {0}", fila["RealizadoPor"].ToString());
-        //        Console.WriteLine("Correo \t\t: {0}\n", fila["Email"].ToString());
-        //    }
-        //}
+            Console.WriteLine("Mostrando XML: {0} ", objInventario.Ds.GetXml().ToString());
+            pausa();
+            Console.WriteLine("Mostrando datos sin formato XML: ");
+            foreach (DataRow fila in objInventario.Ds.Tables["Table"].Rows)
+            {
+                Console.WriteLine("\nId \t\t: {0}", fila["id"].ToString());
+                Console.WriteLine("Código \t\t: {0}", fila["Codigo"].ToString());
+                Console.WriteLine("Fecha \t\t: {0}", fila["Fecha"].ToString());
+                Console.WriteLine("Sección    : {0}", fila["Seccion"].ToString());
+                Console.WriteLine("Nombre Artículo    : {0}", fila["NombreArticulo"].ToString());
+                Console.WriteLine("Estado \t\t: {0}", fila["Estado"].ToString());
+                Console.WriteLine("Etiquetado \t: {0}", fila["Etiquetado"].ToString());
+                Console.WriteLine("Realizado Por \t\t: {0}", fila["RealizadoPor"].ToString());
+            }
+        }
 
         //public static void modificar()
         //{

@@ -25,14 +25,14 @@ namespace LibDataContrerasMontesinos
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "pa_ingresar";
 
-                //cmd.Parameters.Add("@rut", SqlDbType.VarChar, 12).Value = objInventario.Rut;
-                //cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 20).Value = objInventario.Nombre;
-                //cmd.Parameters.Add("@apPaterno", SqlDbType.VarChar, 20).Value = objInventario.ApPaterno;
-                //cmd.Parameters.Add("@apMaterno", SqlDbType.VarChar, 20).Value = objInventario.ApMaterno;
-                //cmd.Parameters.Add("@edad", SqlDbType.Int).Value = objInventario.Edad;
-                //cmd.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = objInventario.Direccion;
-                //cmd.Parameters.Add("@fono", SqlDbType.VarChar, 20).Value = objInventario.Fono;
-                //cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = objInventario.Email;
+                cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = objInventario.Codigo;
+                cmd.Parameters.Add("@fecha", SqlDbType.DateTime).Value = objInventario.Fecha;
+                cmd.Parameters.Add("@seccion", SqlDbType.Int).Value = objInventario.Seccion;
+                cmd.Parameters.Add("@nombreArticulo", SqlDbType.VarChar, 50).Value = objInventario.NombreArticulo;
+                cmd.Parameters.Add("@estado", SqlDbType.VarChar, 20).Value = objInventario.Estado;
+                cmd.Parameters.Add("@etiquetado", SqlDbType.Bit).Value = objInventario.Etiquetado;
+                cmd.Parameters.Add("@realizadoPor", SqlDbType.VarChar, 50).Value = objInventario.RealizadoPor;
+                cmd.Parameters.Add("@eliminado", SqlDbType.Bit).Value = objInventario.Eliminado;
 
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();

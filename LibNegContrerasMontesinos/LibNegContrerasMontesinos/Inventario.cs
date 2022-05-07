@@ -11,9 +11,11 @@ namespace LibNegContrerasMontesinos
     public class Inventario
     {
         #region atributos
-        private string _codigo, _fecha, _seccion, _nombreArticulo, _estado, _etiquetado, _realizadoPor;
+        private string _nombreArticulo, _estado, _realizadoPor;
+        private DateTime _fecha;
         private string _mensaje;
-        private int _id;
+        private bool _etiquetado, _eliminado;
+        private int _id, _codigo, _seccion;
         private DataSet _ds = new DataSet();
 
         //private bool _esExito = false;
@@ -21,15 +23,17 @@ namespace LibNegContrerasMontesinos
 
         #region propiedades
 
-        public string Codigo { get => _codigo; set => _codigo = value; }
-        public string Fecha { get => _fecha; set => _fecha = value; }
-        public string Seccion { get => _seccion; set => _seccion = value; }
         public string NombreArticulo { get => _nombreArticulo; set => _nombreArticulo = value; }
         public string Estado { get => _estado; set => _estado = value; }
-        public string Etiquetado { get => _etiquetado; set => _etiquetado = value; }
         public string RealizadoPor { get => _realizadoPor; set => _realizadoPor = value; }
+        public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public string Mensaje { get => _mensaje; set => _mensaje = value; }
+        public bool Etiquetado { get => _etiquetado; set => _etiquetado = value; }
+        public bool Eliminado { get => _eliminado; set => _eliminado = value; }
         public int Id { get => _id; set => _id = value; }
+        public int Codigo { get => _codigo; set => _codigo = value; }
+        public int Seccion { get => _seccion; set => _seccion = value; }
+        public DataSet Ds { get => _ds; set => _ds = value; }
 
         #endregion
 

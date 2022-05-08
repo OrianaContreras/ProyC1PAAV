@@ -42,7 +42,7 @@ namespace LibDataContrerasMontesinos
             }
             catch (SqlException ex)
             {
-                //objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
+                objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
                 //objInventario.EsExito = false;
             }
             return objInventario;
@@ -73,6 +73,64 @@ namespace LibDataContrerasMontesinos
             }
             return objInventario;
         }// fin mostrar
+
+        public Inventario modificar(Inventario objInventario)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_modificar";
+
+                cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = objInventario.Codigo;
+                cmd.Parameters.Add("@seccion", SqlDbType.Int).Value = objInventario.Seccion;
+                cmd.Parameters.Add("@nombreArticulo", SqlDbType.VarChar, 50).Value = objInventario.NombreArticulo;
+                cmd.Parameters.Add("@estado", SqlDbType.VarChar, 20).Value = objInventario.Estado;
+                cmd.Parameters.Add("@etiquetado", SqlDbType.Bit).Value = objInventario.Etiquetado;
+                cmd.Parameters.Add("@realizadoPor", SqlDbType.VarChar, 50).Value = objInventario.RealizadoPor;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                //objInventario.EsExito = true;
+            }
+            catch (SqlException ex)
+            {
+                objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
+                //objInventario.EsExito = false;
+            }
+            return objInventario;
+        }// fin modificar
+
+        public Inventario eliminar(Inventario objInventario)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_eliminar";
+
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objInventario.Id;
+                cmd.Parameters.Add("@eliminado", SqlDbType.Bit).Value = objInventario.Eliminado;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                //objInventario.EsExito = true;
+            }
+            catch (SqlException ex)
+            {
+                objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
+                //objInventario.EsExito = false;
+            }
+            return objInventario;
+        }// fin eliminar
 
 
         #endregion

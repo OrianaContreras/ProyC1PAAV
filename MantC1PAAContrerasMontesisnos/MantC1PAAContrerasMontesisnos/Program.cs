@@ -35,10 +35,10 @@ namespace MantC1PAAContrerasMontesisnos
                         mostrar();
                         break;
                     case 3:
-                        //modificar();
+                        modificar();
                         break;
                     case 4:
-                        //eliminar();
+                        eliminar();
                         break;
                     case 5:
                         Console.WriteLine("Muchas gracias por utilizar \"Nuestros Servicios de Inventario\"");
@@ -214,17 +214,21 @@ namespace MantC1PAAContrerasMontesisnos
             }
         }
 
-        //public static void modificar()
-        //{
-        //    Inventario objInventario = new Inventario();
-        //    objInventario.modificar(objInventario);
-        //}
+        public static void modificar()
+        {
+            Inventario objInventario = new Inventario();
+            objInventario.modificar(objInventario);
+        }
 
-        //public static void eliminar()
-        //{
-        //    Inventario objInventario = new Inventario();
-        //    objInventario.eliminar(objInventario);
-        //}
+        public static void eliminar()
+        {
+            Inventario objInventario = new Inventario();
+
+            Console.WriteLine("Ingrese Id del registro que desea eliminar:");
+            objInventario.Id = int.Parse(Console.ReadLine());
+
+            objInventario.eliminar(objInventario);
+        }
 
         public static bool obtenerBool()
         {

@@ -37,13 +37,10 @@ namespace LibDataContrerasMontesinos
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
-
-                //objInventario.EsExito = true;
             }
             catch (SqlException ex)
             {
                 objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
-                //objInventario.EsExito = false;
             }
             return objInventario;
         }// fin ingresar
@@ -95,13 +92,10 @@ namespace LibDataContrerasMontesinos
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
-
-                //objInventario.EsExito = true;
             }
             catch (SqlException ex)
             {
                 objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
-                //objInventario.EsExito = false;
             }
             return objInventario;
         }// fin modificar
@@ -122,13 +116,10 @@ namespace LibDataContrerasMontesinos
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
-
-                //objInventario.EsExito = true;
             }
             catch (SqlException ex)
             {
                 objInventario.Mensaje = "Excepcion Capturada: {0} " + ex.ToString();
-                //objInventario.EsExito = false;
             }
             return objInventario;
         }// fin eliminar

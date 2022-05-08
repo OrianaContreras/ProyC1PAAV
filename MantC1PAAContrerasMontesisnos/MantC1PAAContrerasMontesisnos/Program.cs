@@ -72,45 +72,25 @@ namespace MantC1PAAContrerasMontesisnos
 
         public static void ingresar()
         {
-            bool esExito = false;
             Inventario objInventario = new Inventario();
 
             Console.WriteLine("Ingreso de Registo al Inventario:");
             Console.WriteLine("=======================");
-            Console.Write("Ingrese Código      : ");
-            objInventario.Codigo = obtenerNumero();
-            Console.Write("Ingrese Fecha   : ");
-            objInventario.Fecha = obtenerFecha();
-            Console.Write("Ingrese Sección: ");
-            objInventario.Seccion = obtenerNumero();
-            Console.Write("Ingrese Nombre Artículo: ");
-            objInventario.NombreArticulo = Console.ReadLine();
-            Console.Write("Ingrese Estado     : ");
-            objInventario.Estado = Console.ReadLine();
-            Console.Write("Ingrese Etiquetado: ");
-            bool etiquetado = obtenerBool();
-            objInventario.Etiquetado = etiquetado;
-            Console.Write("Ingrese Realizado Por     : ");
-            objInventario.RealizadoPor = Console.ReadLine();
+            
+            objInventario = formulario(objInventario);
+            //if (objInventario.validacionNumeroNegativo(objInventario.Codigo))
+            //{
+            //    Console.WriteLine("El campo Código no debe contener números negativos");
+            //}
+            //if (objInventario.validacionNumeroNegativo(objInventario.Seccion))
+            //{
+            //    Console.WriteLine("El campo sección no debe contener números negativos");
+            //}
+
 
             Console.Clear();
-            Console.WriteLine("Mostrando Datos de Registro");
-            Console.WriteLine("========================");
-            Console.WriteLine("Código        : {0}", objInventario.Codigo);
-            Console.WriteLine("Fecha     : {0}", objInventario.Fecha);
-            Console.WriteLine("Sección: {0}", objInventario.Seccion);
-            Console.WriteLine("Nombre Artículo: {0}", objInventario.NombreArticulo);
-            Console.WriteLine("Estado       : {0}", objInventario.Estado);
-            Console.WriteLine("Etiquetado  : {0}", objInventario.Etiquetado);
-            Console.WriteLine("Realizado Por       : {0}", objInventario.RealizadoPor);
+            imprimirInventario(objInventario);
 
-            //Console.Write("\nLos datos mostrados son correctos? [S/N]: ");
-            //string resp = Console.ReadLine();
-
-            //if (resp.Equals("S") || resp.Equals("s"))
-            //{
-            //    Console.WriteLine("Continuamos con el Ingreso de Datos en la Base de Datos");
-            //}
             //else
             //{
             //    Console.WriteLine("Reingreso Datos Contacto");
@@ -175,8 +155,29 @@ namespace MantC1PAAContrerasMontesisnos
             //}
             //pausa();
 
+
+
+            if (objInventario.validacionNumeroNegativo(objInventario.Codigo))
+            {
+                Console.WriteLine("El campo Código no admite números menores o iguales que 0.");
+            }
+            if (objInventario.validacionNumeroNegativo(objInventario.Seccion))
+            {
+                Console.WriteLine("El campo Sección no admite números menores o iguales que 0.");
+            }
+
+            Console.Write("\nLos datos mostrados son correctos? [S/N]: ");
+            string resp = Console.ReadLine();
+
+            if (resp.Equals("S") || resp.Equals("s"))
+            {
+                Console.WriteLine("Continuamos con el Ingreso del registro en el Inventario");
+            }
+
+
             objInventario = objInventario.ingresar(objInventario);
             bool noTieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+            
             if (noTieneError)
             {
                 Console.WriteLine("Los Datos fueron ingresados correctamente........");
@@ -185,15 +186,6 @@ namespace MantC1PAAContrerasMontesisnos
             {
                 Console.WriteLine($"E R R O R Datos no ingresados. '{objInventario.Mensaje}' !!!!!!!!!");
             }
-
-            //if (objInventario.EsExito)
-            //{
-            //    Console.WriteLine("Los Datos fueron ingresados correctamente........");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("E R R O R Datos no ingresados. !!!!!!!!!");
-            //}
         }
 
         public static void mostrar()
@@ -226,7 +218,7 @@ namespace MantC1PAAContrerasMontesisnos
             }
             else
             {
-                Console.WriteLine($"E R R O R. '{objInventario.Mensaje}' !!!!!!!!!");
+                Console.WriteLine($"E R R O R. '{objInventario.Mensaje}'!!!!!");
             }
 
             
@@ -240,21 +232,7 @@ namespace MantC1PAAContrerasMontesisnos
             Console.WriteLine("=======================");
             Console.Write("Ingrese Id      : ");
             objInventario.Id = obtenerNumero();
-            Console.Write("Ingrese Código      : ");
-            objInventario.Codigo = obtenerNumero();
-            Console.Write("Ingrese Fecha   : ");
-            objInventario.Fecha = obtenerFecha();
-            Console.Write("Ingrese Sección: ");
-            objInventario.Seccion = obtenerNumero();
-            Console.Write("Ingrese Nombre Artículo: ");
-            objInventario.NombreArticulo = Console.ReadLine();
-            Console.Write("Ingrese Estado     : ");
-            objInventario.Estado = Console.ReadLine();
-            Console.Write("Ingrese Etiquetado: ");
-            bool etiquetado = obtenerBool();
-            objInventario.Etiquetado = etiquetado;
-            Console.Write("Ingrese Realizado Por     : ");
-            objInventario.RealizadoPor = Console.ReadLine();
+            objInventario = formulario(objInventario);
 
             objInventario.modificar(objInventario);
         }
@@ -267,6 +245,114 @@ namespace MantC1PAAContrerasMontesisnos
             objInventario.Id = int.Parse(Console.ReadLine());
 
             objInventario.eliminar(objInventario);
+        }
+
+        public static Inventario formulario(Inventario objInventario)
+        {
+            bool esCodigoNegativo = false;
+            do
+            {
+                Console.Write("Ingrese Código      : ");
+                int codigo = obtenerNumero();
+                esCodigoNegativo = objInventario.validacionNumeroNegativo(codigo);
+                if (esCodigoNegativo)
+                {
+                    Console.WriteLine("El campo Código no admite números menores o iguales que 0.");
+                }
+                else
+                {
+                    objInventario.Codigo = codigo;
+                }
+            } while (esCodigoNegativo);
+            
+            
+            Console.Write("Ingrese Fecha   : ");
+            objInventario.Fecha = obtenerFecha();
+
+            bool esSeccionNegativo = false;
+            do
+            {
+                Console.Write("Ingrese Sección      : ");
+                int seccion = obtenerNumero();
+                esSeccionNegativo = objInventario.validacionNumeroNegativo(seccion);
+                if (esSeccionNegativo)
+                {
+                    Console.WriteLine("El campo Sección no admite números menores o iguales que 0.");
+                }
+                else
+                {
+                    objInventario.Seccion = seccion;
+                }
+            } while (esSeccionNegativo);
+
+            bool esValido = false;
+            do
+            {
+                Console.Write("Ingrese  Nombre Artículo      : ");
+                string valor = Console.ReadLine();
+                esValido = objInventario.validacionCampoVacio(valor);
+                if (esValido)
+                {
+                    Console.WriteLine("El campo  Nombre Artículo no debe estar vacío.");
+                }
+                else
+                {
+                    objInventario.NombreArticulo = valor;
+                }
+            } while (esValido);
+
+            do
+            {
+                Console.Write("Ingrese Estado      : ");
+                string valor = Console.ReadLine();
+                esValido = objInventario.validacionCampoVacio(valor);
+                if (esValido)
+                {
+                    Console.WriteLine("El campo Estado no debe estar vacío.");
+                }
+                else
+                {
+                    objInventario.Estado = valor;
+                }
+            } while (esValido);
+
+            Console.Write("Ingrese Etiquetado: ");
+            bool etiquetado = obtenerBool();
+            objInventario.Etiquetado = etiquetado;
+
+            do
+            {
+                Console.Write("Ingrese Realizado Por      : ");
+                string valor = Console.ReadLine();
+                esValido = objInventario.validacionCampoVacio(valor);
+                if (esValido)
+                {
+                    Console.WriteLine("El campo Realizado Por no debe estar vacío.");
+                }
+                else
+                {
+                    objInventario.RealizadoPor = valor;
+                }
+            } while (esValido);
+
+            return objInventario;
+        }
+
+        public static void imprimirInventario(Inventario objInventario)
+        {
+            Console.WriteLine("Mostrando Datos de Registro");
+            Console.WriteLine("========================");
+            if (!objInventario.Id.Equals(0))
+            {
+                Console.WriteLine("Id        : {0}", objInventario.Id);
+            }
+            Console.WriteLine("Código        : {0}", objInventario.Codigo);
+            Console.WriteLine("Fecha     : {0}", objInventario.Fecha);
+            Console.WriteLine("Sección: {0}", objInventario.Seccion);
+            Console.WriteLine("Nombre Artículo: {0}", objInventario.NombreArticulo);
+            Console.WriteLine("Estado       : {0}", objInventario.Estado);
+            Console.WriteLine("Etiquetado  : {0}", objInventario.Etiquetado);
+            Console.WriteLine("Realizado Por       : {0}", objInventario.RealizadoPor);
         }
 
         public static bool obtenerBool()
@@ -309,6 +395,7 @@ namespace MantC1PAAContrerasMontesisnos
 
                 if (String.IsNullOrEmpty(inputString))
                 {
+                    Console.WriteLine("El campo no debe estar vacío");
                     continue;
                 }
                 try
@@ -318,7 +405,7 @@ namespace MantC1PAAContrerasMontesisnos
                 }
                 catch (FormatException e)
                 {
-                    Console.WriteLine("El formato ingresado no es válido");
+                    Console.WriteLine("El formato ingresado no es válido (este campo solo acepta números)");
                 }
                 catch(OverflowException e)
                 {
@@ -367,6 +454,7 @@ namespace MantC1PAAContrerasMontesisnos
             
             return valor;
         } // fin obtenerFecha
+
 
     }// fin class
 }// fin namespace

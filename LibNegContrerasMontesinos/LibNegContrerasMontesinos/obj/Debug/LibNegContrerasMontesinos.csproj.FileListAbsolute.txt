@@ -6,4 +6,3 @@ C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibN
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibDataContrerasMontesinos.dll
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\bin\Debug\LibDataContrerasMontesinos.pdb
 C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.CopyComplete
-C:\ProyC1PAAV\LibNegContrerasMontesinos\LibNegContrerasMontesinos\obj\Debug\LibNegContrerasMontesinos.csproj.AssemblyReference.cache

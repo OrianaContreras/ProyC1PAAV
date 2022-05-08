@@ -17,8 +17,6 @@ namespace LibNegContrerasMontesinos
         private bool _etiquetado, _eliminado;
         private int _id, _codigo, _seccion;
         private DataSet _ds = new DataSet();
-
-        //private bool _esExito = false;
         #endregion
 
         #region propiedades
@@ -51,7 +49,7 @@ namespace LibNegContrerasMontesinos
             objInventario = objDB.mostrar(objInventario);
             return objInventario;
         }// fin mostrar
-
+        
         public Inventario modificar(Inventario objInventario)
         {
             BaseDato objDB = new BaseDato();
@@ -68,6 +66,16 @@ namespace LibNegContrerasMontesinos
         }// fin eliminar
 
         #endregion
+
+        public bool validacionNumeroNegativo(int valor)
+        {
+            return valor <= 0;
+        }
+
+        public bool validacionCampoVacio(string valor)
+        {
+            return String.IsNullOrEmpty(valor);
+        }
 
 
     }// Fin Class

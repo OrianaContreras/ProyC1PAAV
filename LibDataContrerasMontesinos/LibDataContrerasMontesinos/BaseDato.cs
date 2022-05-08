@@ -83,6 +83,7 @@ namespace LibDataContrerasMontesinos
 
                 cmd.Parameters.Add("@id", SqlDbType.Int).Value = objInventario.Id;
                 cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = objInventario.Codigo;
+                cmd.Parameters.Add("@fecha", SqlDbType.DateTime).Value = objInventario.Fecha;
                 cmd.Parameters.Add("@seccion", SqlDbType.Int).Value = objInventario.Seccion;
                 cmd.Parameters.Add("@nombreArticulo", SqlDbType.VarChar, 50).Value = objInventario.NombreArticulo;
                 cmd.Parameters.Add("@estado", SqlDbType.VarChar, 20).Value = objInventario.Estado;

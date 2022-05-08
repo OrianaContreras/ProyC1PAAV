@@ -84,6 +84,7 @@ namespace LibDataContrerasMontesinos
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "pa_modificar";
 
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objInventario.Id;
                 cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = objInventario.Codigo;
                 cmd.Parameters.Add("@seccion", SqlDbType.Int).Value = objInventario.Seccion;
                 cmd.Parameters.Add("@nombreArticulo", SqlDbType.VarChar, 50).Value = objInventario.NombreArticulo;

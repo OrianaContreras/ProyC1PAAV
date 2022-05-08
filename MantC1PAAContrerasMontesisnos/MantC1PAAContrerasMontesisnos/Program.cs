@@ -78,12 +78,12 @@ namespace MantC1PAAContrerasMontesisnos
             Console.WriteLine("Ingreso de Registo al Inventario:");
             Console.WriteLine("=======================");
             Console.Write("Ingrese Código      : ");
-            objInventario.Codigo = int.Parse(Console.ReadLine());
+            objInventario.Codigo = obtenerNumero();
             //Console.Write("Ingrese Fecha   : ");
             //string fecha = Console.ReadLine();
             objInventario.Fecha = DateTime.Now;
             Console.Write("Ingrese Sección: ");
-            objInventario.Seccion = int.Parse(Console.ReadLine());
+            objInventario.Seccion = obtenerNumero();
             Console.Write("Ingrese Nombre Artículo: ");
             objInventario.NombreArticulo = Console.ReadLine();
             Console.Write("Ingrese Estado     : ");
@@ -217,6 +217,28 @@ namespace MantC1PAAContrerasMontesisnos
         public static void modificar()
         {
             Inventario objInventario = new Inventario();
+
+            Console.WriteLine("Actualización de Registro:");
+            Console.WriteLine("=======================");
+            Console.Write("Ingrese Id      : ");
+            objInventario.Id = obtenerNumero();
+            Console.Write("Ingrese Código      : ");
+            objInventario.Codigo = obtenerNumero();
+            //Console.Write("Ingrese Fecha   : ");
+            //string fecha = Console.ReadLine();
+            //objInventario.Fecha = DateTime.Now;
+            Console.Write("Ingrese Sección: ");
+            objInventario.Seccion = obtenerNumero();
+            Console.Write("Ingrese Nombre Artículo: ");
+            objInventario.NombreArticulo = Console.ReadLine();
+            Console.Write("Ingrese Estado     : ");
+            objInventario.Estado = Console.ReadLine();
+            Console.Write("Ingrese Etiquetado: ");
+            bool etiquetado = obtenerBool();
+            objInventario.Etiquetado = etiquetado;
+            Console.Write("Ingrese Realizado Por     : ");
+            objInventario.RealizadoPor = Console.ReadLine();
+
             objInventario.modificar(objInventario);
         }
 
@@ -254,6 +276,38 @@ namespace MantC1PAAContrerasMontesisnos
                     valor = false;
                     esValido = true;
                 }
+            } while (!esValido);
+
+            return valor;
+        }
+
+        public static int obtenerNumero()
+        {
+            int valor = 0;
+            bool esValido = false;
+
+            do
+            {
+                string inputString = Console.ReadLine().ToLower();
+
+                if (String.IsNullOrEmpty(inputString))
+                {
+                    continue;
+                }
+                try
+                {
+                    valor = int.Parse(inputString);
+                    esValido = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                if (!esValido)
+                {
+                    Console.WriteLine("Por favor intente nuevamente:");
+                }
+                
             } while (!esValido);
 
             return valor;

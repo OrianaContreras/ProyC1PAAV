@@ -9,4 +9,3 @@ C:\ProyC1PAAV\MantC1PAAContrerasMontesisnos\MantC1PAAContrerasMontesisnos\bin\De
 C:\ProyC1PAAV\MantC1PAAContrerasMontesisnos\MantC1PAAContrerasMontesisnos\obj\Debug\MantC1PAAContrerasMontesisnos.csproj.CopyComplete
 C:\ProyC1PAAV\MantC1PAAContrerasMontesisnos\MantC1PAAContrerasMontesisnos\obj\Debug\MantC1PAAContrerasMontesisnos.exe
 C:\ProyC1PAAV\MantC1PAAContrerasMontesisnos\MantC1PAAContrerasMontesisnos\obj\Debug\MantC1PAAContrerasMontesisnos.pdb
-C:\ProyC1PAAV\MantC1PAAContrerasMontesisnos\MantC1PAAContrerasMontesisnos\obj\Debug\MantC1PAAContrerasMontesisnos.csproj.AssemblyReference.cache

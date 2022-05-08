@@ -12,9 +12,9 @@ namespace MantC1PAAContrerasMontesisnos
     {
         static void Main(string[] args)
         {
+            int op = 0;
             do
             {
-                int op = 0;
                 do
                 {
                     menu();
@@ -48,7 +48,7 @@ namespace MantC1PAAContrerasMontesisnos
                         break;
                 }// fin switch
 
-            } while (true);
+            } while (op != 5);
         }// fin main
 
         public static void menu()
@@ -177,6 +177,15 @@ namespace MantC1PAAContrerasMontesisnos
             //pausa();
 
             objInventario = objInventario.ingresar(objInventario);
+            bool tieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+            if (!tieneError)
+            {
+                Console.WriteLine("Los Datos fueron ingresados correctamente........");
+            }
+            else
+            {
+                Console.WriteLine($"E R R O R Datos no ingresados. '{objInventario.Mensaje}' !!!!!!!!!");
+            }
 
             //if (objInventario.EsExito)
             //{
@@ -194,24 +203,34 @@ namespace MantC1PAAContrerasMontesisnos
             Inventario objInventario = new Inventario();
 
             Console.WriteLine("Ingrese Código");
-            objInventario.Codigo = int.Parse(Console.ReadLine());
+            objInventario.Codigo = obtenerNumero();
 
             objInventario = objInventario.mostrar(objInventario);
-
-            Console.WriteLine("Mostrando XML: {0} ", objInventario.Ds.GetXml().ToString());
-            pausa();
-            Console.WriteLine("Mostrando datos sin formato XML: ");
-            foreach (DataRow fila in objInventario.Ds.Tables["Table"].Rows)
+            bool noTieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+            if (noTieneError)
             {
-                Console.WriteLine("\nId \t\t: {0}", fila["id"].ToString());
-                Console.WriteLine("Código \t\t: {0}", fila["Codigo"].ToString());
-                Console.WriteLine("Fecha \t\t: {0}", fila["Fecha"].ToString());
-                Console.WriteLine("Sección    : {0}", fila["Seccion"].ToString());
-                Console.WriteLine("Nombre Artículo    : {0}", fila["NombreArticulo"].ToString());
-                Console.WriteLine("Estado \t\t: {0}", fila["Estado"].ToString());
-                Console.WriteLine("Etiquetado \t: {0}", fila["Etiquetado"].ToString());
-                Console.WriteLine("Realizado Por \t\t: {0}", fila["RealizadoPor"].ToString());
+                Console.WriteLine("Mostrando XML: {0} ", objInventario.Ds.GetXml().ToString());
+                pausa();
+
+                Console.WriteLine("Mostrando datos sin formato XML: ");
+                foreach (DataRow fila in objInventario.Ds.Tables["Table"].Rows)
+                {
+                    Console.WriteLine("\nId \t\t: {0}", fila["id"].ToString());
+                    Console.WriteLine("Código \t\t: {0}", fila["Codigo"].ToString());
+                    Console.WriteLine("Fecha \t\t: {0}", fila["Fecha"].ToString());
+                    Console.WriteLine("Sección    : {0}", fila["Seccion"].ToString());
+                    Console.WriteLine("Nombre Artículo    : {0}", fila["NombreArticulo"].ToString());
+                    Console.WriteLine("Estado \t\t: {0}", fila["Estado"].ToString());
+                    Console.WriteLine("Etiquetado \t: {0}", fila["Etiquetado"].ToString());
+                    Console.WriteLine("Realizado Por \t\t: {0}", fila["RealizadoPor"].ToString());
+                }
             }
+            else
+            {
+                Console.WriteLine($"E R R O R. '{objInventario.Mensaje}' !!!!!!!!!");
+            }
+
+            
         }
 
         public static void modificar()

@@ -79,9 +79,8 @@ namespace MantC1PAAContrerasMontesisnos
             Console.WriteLine("=======================");
             Console.Write("Ingrese Código      : ");
             objInventario.Codigo = obtenerNumero();
-            //Console.Write("Ingrese Fecha   : ");
-            //string fecha = Console.ReadLine();
-            objInventario.Fecha = DateTime.Now;
+            Console.Write("Ingrese Fecha   : ");
+            objInventario.Fecha = obtenerFecha();
             Console.Write("Ingrese Sección: ");
             objInventario.Seccion = obtenerNumero();
             Console.Write("Ingrese Nombre Artículo: ");
@@ -177,8 +176,8 @@ namespace MantC1PAAContrerasMontesisnos
             //pausa();
 
             objInventario = objInventario.ingresar(objInventario);
-            bool tieneError = String.IsNullOrEmpty(objInventario.Mensaje);
-            if (!tieneError)
+            bool noTieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+            if (noTieneError)
             {
                 Console.WriteLine("Los Datos fueron ingresados correctamente........");
             }
@@ -243,9 +242,8 @@ namespace MantC1PAAContrerasMontesisnos
             objInventario.Id = obtenerNumero();
             Console.Write("Ingrese Código      : ");
             objInventario.Codigo = obtenerNumero();
-            //Console.Write("Ingrese Fecha   : ");
-            //string fecha = Console.ReadLine();
-            //objInventario.Fecha = DateTime.Now;
+            Console.Write("Ingrese Fecha   : ");
+            objInventario.Fecha = obtenerFecha();
             Console.Write("Ingrese Sección: ");
             objInventario.Seccion = obtenerNumero();
             Console.Write("Ingrese Nombre Artículo: ");
@@ -318,10 +316,19 @@ namespace MantC1PAAContrerasMontesisnos
                     valor = int.Parse(inputString);
                     esValido = true;
                 }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("El formato ingresado no es válido");
+                }
+                catch(OverflowException e)
+                {
+                    Console.WriteLine("El largo del número ingresado no es válido");
+                }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
+
                 if (!esValido)
                 {
                     Console.WriteLine("Por favor intente nuevamente:");
@@ -330,6 +337,36 @@ namespace MantC1PAAContrerasMontesisnos
             } while (!esValido);
 
             return valor;
-        }
+        }// fin obtenerNumero
+
+        public static DateTime obtenerFecha()
+        {
+            DateTime valor = DateTime.Now;
+            bool esValido = false;
+         
+            do
+            {
+                Console.WriteLine("Ingrese la fecha del registro en fomato DD/MM/AAAA");
+                string inputString = Console.ReadLine();
+
+                if (String.IsNullOrEmpty(inputString))
+                {
+                    continue;
+                }
+                try
+                {
+                    DateTime dateTime = DateTime.Parse(inputString);
+                    Console.WriteLine("La fecha ingresada posee formato correcto: " + dateTime);
+                    esValido = true;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("El formato ingresado no es correcto, por favor ingrese nuevamente la fecha.");
+                }
+            } while (!esValido);
+            
+            return valor;
+        } // fin obtenerFecha
+
     }// fin class
 }// fin namespace

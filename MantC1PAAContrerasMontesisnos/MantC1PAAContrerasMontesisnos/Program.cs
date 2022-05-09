@@ -110,8 +110,10 @@ namespace MantC1PAAContrerasMontesisnos
         {
             DataSet ds = new DataSet();
             Inventario objInventario = new Inventario();
-
-            Console.WriteLine("Ingrese Código");
+            Console.WriteLine("Mostrar");
+            Console.WriteLine("=======================");
+            Console.WriteLine("Si Ud. desea ver todos los registros ingrese un 0 , de lo contrario indique el código de registro deseado");
+            Console.WriteLine("Ingrese Código:");
             objInventario.Codigo = obtenerNumero();
 
             objInventario = objInventario.mostrar(objInventario);
@@ -140,7 +142,7 @@ namespace MantC1PAAContrerasMontesisnos
             }
 
             
-        }
+        }// fin mostrar
 
         public static void modificar()
         {
@@ -153,7 +155,17 @@ namespace MantC1PAAContrerasMontesisnos
             objInventario = formulario(objInventario, esPrimerIngreso: true);
 
             objInventario.modificar(objInventario);
-        }
+            bool noTieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+
+            if (noTieneError)
+            {
+                Console.WriteLine("Los Datos fueron modificados correctamente........");
+            }
+            else
+            {
+                Console.WriteLine($"E R R O R Datos no lograron ser modificados. '{objInventario.Mensaje}' !!!!!!!!!");
+            }
+        }// fin modificar
 
         public static void eliminar()
         {
@@ -163,7 +175,18 @@ namespace MantC1PAAContrerasMontesisnos
             objInventario.Id = int.Parse(Console.ReadLine());
 
             objInventario.eliminar(objInventario);
-        }
+
+            bool noTieneError = String.IsNullOrEmpty(objInventario.Mensaje);
+
+            if (noTieneError)
+            {
+                Console.WriteLine("El registro fue eliminado correctamente........");
+            }
+            else
+            {
+                Console.WriteLine($"E R R O R registro no fue eliminado. '{objInventario.Mensaje}' !!!!!!!!!");
+            }
+        }// fin eliminar
 
         public static void imprimirInventario(Inventario objInventario)
         {
@@ -180,7 +203,7 @@ namespace MantC1PAAContrerasMontesisnos
             Console.WriteLine("Estado       : {0}", objInventario.Estado);
             Console.WriteLine("Etiquetado  : {0}", objInventario.Etiquetado);
             Console.WriteLine("Realizado Por       : {0}", objInventario.RealizadoPor);
-        }
+        }// fin imprimirInventario
 
         public static bool obtenerBool()
         {
@@ -209,7 +232,7 @@ namespace MantC1PAAContrerasMontesisnos
             } while (!esValido);
 
             return valor;
-        }
+        }// fin obtenerBool
 
         public static int obtenerNumero()
         {
@@ -264,7 +287,7 @@ namespace MantC1PAAContrerasMontesisnos
             objInventario = ingresarRealizadoPor(objInventario, esPrimerIngreso: esPrimerIngreso);
 
             return objInventario;
-        }
+        }//fin formulario
 
         public static Inventario ingresarCodigo(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -294,7 +317,7 @@ namespace MantC1PAAContrerasMontesisnos
                 } while (esCodigoNegativo);
             }
             return objInventario;
-        }
+        }// fin ingresarCodigo
 
         public static Inventario ingresarFecha(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -311,7 +334,7 @@ namespace MantC1PAAContrerasMontesisnos
                 objInventario.Fecha = obtenerFecha();
             }
             return objInventario;
-        }
+        }// fin ingresarFecha
 
         public static DateTime obtenerFecha()
         {
@@ -369,7 +392,7 @@ namespace MantC1PAAContrerasMontesisnos
                 } while (esSeccionoNegativo);
             }
             return objInventario;
-        }
+        }// fin ingresarSeccion
 
         public static Inventario ingresarNombreArticulo(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -398,7 +421,7 @@ namespace MantC1PAAContrerasMontesisnos
                 } while (esValido);
             }
             return objInventario;
-        }
+        }// fin ingresarNombreArticulo
 
         public static Inventario ingresarEstado(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -427,7 +450,7 @@ namespace MantC1PAAContrerasMontesisnos
                 } while (esValido);
             }
             return objInventario;
-        }
+        }// fin ingresarEstado
 
         public static Inventario ingresarEtiquetado(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -444,7 +467,7 @@ namespace MantC1PAAContrerasMontesisnos
                 objInventario.Etiquetado = etiquetado;
             }
             return objInventario;
-        }
+        }// fin ingresarEtiquetado
 
         public static Inventario ingresarRealizadoPor(Inventario objInventario, bool esPrimerIngreso)
         {
@@ -473,6 +496,6 @@ namespace MantC1PAAContrerasMontesisnos
                 } while (esValido);
             }
             return objInventario;
-        }
+        }//fin ingresarRealizadoPor
     }// fin class
 }// fin namespace
